@@ -17,7 +17,11 @@ APP.get('/', function (req, res) {
     console.log('Recieved a GET request. Responding with: ' + JSON.stringify(data));
 })
 
-
+APP.post('/', function(req, res) {
+    console.log(req.body);
+    data.obj.push(req.body);
+    res.send('recieved');
+})
 APP.listen(
     PORT,
     () => console.log('Listening..')
