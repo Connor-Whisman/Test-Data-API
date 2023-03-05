@@ -5,12 +5,12 @@ const PORT      = 8080;
 
 
 var data = {
-    buckets: 
+    containers: 
     [
         {
-            name: "One",
-            object: {
-                name: "object1",
+            name: "Container One",
+            item: {
+                name: "Item 1",
                 date: "1-1-23",
                 description: "testing..",
                 records: [
@@ -47,9 +47,9 @@ var data = {
             
         },
         {
-            name: "Two",
-            object: {
-                name: "object2",
+            name: "Container Two",
+            item: {
+                name: "Item 2",
                 date: "1-1-23",
                 description: "testing..",
                 records: [
@@ -85,9 +85,9 @@ var data = {
             }
         },
         {
-            name: "Three",
-            object: {
-                name: "object3",
+            name: "Container Three",
+            item: {
+                name: "Item 3",
                 date: "1-1-23",
                 description: "testing..",
                 records: [
