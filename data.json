@@ -1,10 +1,4 @@
-
-
-const APP       = require('express')();
-const PORT      = 8080;
-
-
-var data = {
+{
     "containers": 
     [
         {
@@ -124,21 +118,3 @@ var data = {
         }
     ]
 }
-
-
-APP.get('/', function (req, res) {
-    res.header({'Access-Control-Allow-Origin': '*', 'Content-Type': 'application/json'});
-    res.send(data);
-    console.log('Recieved a GET request. Responding with: ' + JSON.stringify(data));
-})
-
-APP.post('/', function(req, res) {
-    console.log(req.body);
-    data.obj.push(req.body);
-    res.send('recieved');
-})
-APP.listen(
-    PORT,
-    () => console.log('Listening..')
-);
-
