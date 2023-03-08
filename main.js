@@ -127,7 +127,8 @@ var data = {
 
 
 APP.get('/', function (req, res) {
-    res.header({'Access-Control-Allow-Origin': '*', 'Content-Type': 'application/json'});
+    res.set('Access-Control-Allow-Origin', '*');
+    res.type('application/json');
     res.send(data);
     console.log('Recieved a GET request. Responding with: ' + JSON.stringify(data));
 })
