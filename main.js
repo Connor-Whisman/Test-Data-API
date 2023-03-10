@@ -129,8 +129,8 @@ var data = {
 APP.get('/', function (req, res) {
     var obj;
     res.header({'Access-Control-Allow-Origin': '*'});
-
-    if (typeof req.query.length !== 'undefined' || req.query.length !== '') {
+    
+    if (typeof req.query.length !== "undefined") {
         if (req.query.length === '*') {
             obj = data;
         }
@@ -140,14 +140,17 @@ APP.get('/', function (req, res) {
                 if (length != 0) {
                     obj = {'containers': data.containers.slice(0, length)};
                 }
+                else {
+                    obj = {'containers': [data.containers[0]]}
+                }
             }
             catch {
-                obj.data = {'containers': data.containers[0]};
+                obj = {'containers': [data.containers[0]]}
             }
         }
     }
     else {
-        obj.data = {'containers': data.containers[0]};
+        obj = {'containers': [data.containers[0]]}
     }
     res.send(obj);
 
