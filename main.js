@@ -1,8 +1,12 @@
 
+const cors       = require('cors');
+const bodyParser = require('body-parser');
+const APP        = require('express')();
+const PORT       = 8080;
 
-const APP       = require('express')();
-const PORT      = 8080;
+APP.use(cors());
 
+var jsonParser   = bodyParser.json();
 
 var data = {
     containers: 
@@ -159,11 +163,12 @@ APP.get('/', function (req, res) {
 })
 
 
-// APP.post('/', function(req, res) {
-//     console.log(req.body);
-//     data.obj.push(req.body);
-//     res.send('recieved');
-// })
+APP.post('/post', jsonParser, function(req, res) {
+    var post = req.body;
+    console.log("POST: ", post);
+    data.containers.push(post);
+    res.sendStatus(200);
+})
 
 
 APP.listen(
