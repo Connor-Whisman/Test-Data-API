@@ -134,27 +134,40 @@ APP.get('/', function (req, res) {
     var obj;
     res.header({'Access-Control-Allow-Origin': '*'});
     
-    if (typeof req.query.length !== "undefined") {
-        if (req.query.length === '*') {
+    if (typeof req.query.amount !== "undefined") {
+        if (req.query.amount === '*') {
+            data.total = data.containers.length;
             obj = data;
         }
         else {
             try {
-                var length = Number(req.query.length);
-                if (length != 0) {
-                    obj = {'containers': data.containers.slice(0, length)};
+                var amount = Number(req.query.amount);
+                if (amount != 0) {
+                    obj = {
+                        containers: data.containers.slice(0, amount),
+                        total: data.containers.length
+                    }
                 }
                 else {
-                    obj = {'containers': [data.containers[0]]}
+                    obj = {
+                        containers: [data.containers[0]],
+                        total: data.containers.length
+                    }
                 }
             }
             catch {
-                obj = {'containers': [data.containers[0]]}
+                obj = {
+                    containers: [data.containers[0]],
+                    total: data.containers.length
+                }
             }
         }
     }
     else {
-        obj = {'containers': [data.containers[0]]}
+        obj = {
+            containers: [data.containers[0]],
+            total: data.containers.length
+        }
     }
     res.send(obj);
 
