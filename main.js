@@ -134,41 +134,43 @@ APP.get('/', function (req, res) {
     var obj;
     res.header({'Access-Control-Allow-Origin': '*'});
     
-    if (typeof req.query.amount !== "undefined") {
-        if (req.query.amount === '*') {
-            data.total = data.containers.length;
-            obj = data;
-        }
-        else {
-            try {
-                var amount = Number(req.query.amount);
-                if (amount != 0) {
-                    obj = {
-                        containers: data.containers.slice(0, amount),
-                        total: data.containers.length
-                    }
-                }
-                else {
-                    obj = {
-                        containers: [data.containers[0]],
-                        total: data.containers.length
-                    }
-                }
-            }
-            catch {
-                obj = {
-                    containers: [data.containers[0]],
-                    total: data.containers.length
-                }
-            }
-        }
-    }
-    else {
-        obj = {
-            containers: [data.containers[0]],
-            total: data.containers.length
-        }
-    }
+    // if (typeof req.query.amount !== "undefined") {
+    //     if (req.query.amount === '*') {
+    //         data.total = data.containers.length;
+    //         obj = data;
+    //     }
+    //     else {
+    //         try {
+    //             var amount = Number(req.query.amount);
+    //             if (amount != 0) {
+    //                 obj = {
+    //                     containers: data.containers.slice(0, amount),
+    //                     total: data.containers.length
+    //                 }
+    //             }
+    //             else {
+    //                 obj = {
+    //                     containers: [data.containers[0]],
+    //                     total: data.containers.length
+    //                 }
+    //             }
+    //         }
+    //         catch {
+    //             obj = {
+    //                 containers: [data.containers[0]],
+    //                 total: data.containers.length
+    //             }
+    //         }
+    //     }
+    // }
+    // else {
+    //     obj = {
+    //         containers: [data.containers[0]],
+    //         total: data.containers.length
+    //     }
+    // }
+    data.total = data.containers.length;
+    obj = data;
     res.send(obj);
 
     console.log(req.query);
@@ -179,7 +181,8 @@ APP.get('/', function (req, res) {
 APP.post('/post', jsonParser, function(req, res) {
     var post = req.body;
     console.log("POST: ", post);
-    data.containers.push(post);
+    
+    data.containers = post;
     res.sendStatus(200);
 })
 
