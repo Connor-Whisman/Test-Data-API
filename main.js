@@ -170,6 +170,11 @@ APP.get('/', function (req, res) {
     //     }
     // }
     data.total = data.containers.length;
+    data.itemList = [
+        {name: 'Item1', dateCreated: new Date(), description: 'item test 1', records: []},
+        {name: 'Item2', dateCreated: new Date(), description: 'item test 2', records: []},
+        {name: 'Item3', dateCreated: new Date(), description: 'item test 3', records: []}
+    ]
     obj = data;
     res.send(obj);
 
