@@ -126,6 +126,11 @@ var data = {
                 ]
             }
         }
+    ],
+    itemOpts: [
+        {name: 'Item1', dateCreated: new Date(), records: [], description: 'item test 1'},
+        {name: 'Item2', dateCreated: new Date(), records: [], description: 'item test 2'},
+        {name: 'Item3', dateCreated: new Date(), records: [], description: 'item test 3'}
     ]
 }
 
@@ -170,11 +175,11 @@ APP.get('/', function (req, res) {
     //     }
     // }
     data.total = data.containers.length;
-    data.itemList = [
-        {name: 'Item1', dateCreated: new Date(), records: [], description: 'item test 1'},
-        {name: 'Item2', dateCreated: new Date(), records: [], description: 'item test 2'},
-        {name: 'Item3', dateCreated: new Date(), records: [], description: 'item test 3'}
-    ]
+    // data.itemList = [
+    //     {name: 'Item1', dateCreated: new Date(), records: [], description: 'item test 1'},
+    //     {name: 'Item2', dateCreated: new Date(), records: [], description: 'item test 2'},
+    //     {name: 'Item3', dateCreated: new Date(), records: [], description: 'item test 3'}
+    // ]
     obj = data;
     res.send(obj);
 
@@ -187,7 +192,7 @@ APP.post('/post', jsonParser, function(req, res) {
     var post = req.body;
     console.log("POST: ", post);
     
-    data.containers = post;
+    data = post;
     res.sendStatus(200);
 })
 
