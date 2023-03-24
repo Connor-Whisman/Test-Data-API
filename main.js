@@ -171,9 +171,9 @@ APP.get('/', function (req, res) {
     // }
     data.total = data.containers.length;
     data.itemList = [
-        {name: 'Item1', dateCreated: new Date(), description: 'item test 1', records: []},
-        {name: 'Item2', dateCreated: new Date(), description: 'item test 2', records: []},
-        {name: 'Item3', dateCreated: new Date(), description: 'item test 3', records: []}
+        {name: 'Item1', dateCreated: new Date(), records: [], description: 'item test 1'},
+        {name: 'Item2', dateCreated: new Date(), records: [], description: 'item test 2'},
+        {name: 'Item3', dateCreated: new Date(), records: [], description: 'item test 3'}
     ]
     obj = data;
     res.send(obj);
