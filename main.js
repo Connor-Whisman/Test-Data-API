@@ -131,6 +131,9 @@ var data = {
         {name: 'Item1', dateCreated: new Date(), records: [], description: 'item test 1'},
         {name: 'Item2', dateCreated: new Date(), records: [], description: 'item test 2'},
         {name: 'Item3', dateCreated: new Date(), records: [], description: 'item test 3'}
+    ],
+    archive: [
+        
     ]
 }
 
