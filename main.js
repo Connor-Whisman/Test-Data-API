@@ -133,7 +133,7 @@ var data = {
         {name: 'Item3', dateCreated: new Date(), records: [], description: 'item test 3'}
     ],
     archive: [
-        
+        {name: 'Item1', dateCreated: new Date(), records: [], description: 'item test 1', container: 'Container 1'},
     ]
 }
 
@@ -191,7 +191,7 @@ APP.get('/', function (req, res) {
 })
 
 
-APP.post('/post', jsonParser, function(req, res) {
+APP.post('/saveAll', jsonParser, function(req, res) {
     var post = req.body;
     console.log("POST: ", post);
     
@@ -199,6 +199,28 @@ APP.post('/post', jsonParser, function(req, res) {
     res.sendStatus(200);
 })
 
+APP.post('/saveContainers', jsonParser, function(req, res) {
+    console.log('posted');
+    var post = req.body;
+    console.log("POST: ", post.containers);
+    
+    data.containers = post.containers;
+    res.sendStatus(200);
+})
+APP.post('/saveItemOpts', jsonParser, function(req, res) {
+    var post = req.body;
+    console.log("POST: ", post.itemOpts);
+    
+    data.itemOpts = post.itemOpts;
+    res.sendStatus(200);
+})
+APP.post('/saveArchive', jsonParser, function(req, res) {
+    var post = req.body;
+    console.log("POST: ", post.archive);
+    
+    data.archive = post.archive;
+    res.sendStatus(200);
+})
 
 APP.listen(
     PORT,
